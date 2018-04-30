@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Formularios</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="logoStyle.css">
+    <link rel="stylesheet" href="style.css">
+    <script type=\"text/javascript\" src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js\"></script>
+</head>
+
+<body>
+<div id="guiajuegos">
+    <div class="fbox">
+        <div class="guia"><a href="index.html">Guia</a></div>
+        <div class="juegos"><a href="index.html">Juegos</a></div>
+    </div>
+</div>
+
+<div class="menu">
+    <ul>
+        <li><a href="">PS4</a></li>
+        <li><a href="">XBOX</a></li>
+        <li><a href="">PC</a></li>
+        <li><a href="">FORO</a></li>
+    </ul>
+    <ul>
+        <li><a href="">Noticias</a></li>
+        <li><a href="">Análisis</a></li>
+        <li><a href="ranking.html">Ranking</a></li>
+        <li><a href="guides.html">Guias</a></li>
+        <li><a href="">Eventos</a></li>
+        <li><a href="">Logros</a></li>
+        <li><a href="">Trucos</a></li>
+        <li><a id="active" href="formulario.html">Regístrate</a>
+        <li>
+    </ul>
+</div>
+
+<div id="contenido">
+    <div id="wrapper">
+        <h2>¡Regístrate YA!</h2>
+        <form action="index.html" onsubmit="return Validate()" name="vform">
+            <div id="username_div">
+                <label>Nombre de usuario</label> <br>
+                <input type="text" name="username" class="textInput" placeholder="Nombre de Usuario">
+                <div id="name_error"></div>
+            </div>
+            <div id="email_div">
+                <label>Email</label> <br>
+                <input type="email" name="email" class="textInput" placeholder="email@hotmail.com">
+                <div id="email_error"></div>
+            </div>
+            <div id="password_div">
+                <label>Password</label> <br>
+                <input type="password" name="password" class="textInput" placeholder="******">
+            </div>
+            <div id="pass_confirm_div">
+                <label>Password confirm</label> <br>
+                <input type="password" name="password_confirm" class="textInput" placeholder="******">
+                <div id="password_error"></div>
+            </div>
+            <div>
+                <input type="checkbox" name="terminos" value="terminos" required> Acepto Terminos y Condiciones
+            </div>
+            <div>
+                <input type="submit" name="register" value="Registrarse" class="btn">
+            </div>
+
+        </form>
+    </div>
+</div>
+</body>
+
+</html>
+<script type="text/javascript">
+    var username = document.forms['vform']['username'];
+    var email = document.forms['vform']['email'];
+    var password = document.forms['vform']['password'];
+    var password_confirm = document.forms['vform']['password_confirm'];
+
+
+    var name_error = document.getElementById('name_error');
+    var email_error = document.getElementById('email_error');
+    var password_error = document.getElementById('password_error');
+
+    username.addEventListener('blur', nameVerify, true);
+    email.addEventListener('blur', emailVerify, true);
+    password.addEventListener('blur', passwordVerify, true);
+
+    // js validacion
+    //control de los campos
+    function Validate() {
+
+        if (username.value == "") {
+            username.style.border = "1px solid red";
+            document.getElementById('username_div').style.color = "red";
+            name_error.textContent = "Username is required";
+            username.focus();
+            return false;
+        }
+
+        if (username.value.length < 6) {
+            username.style.border = "1px solid red";
+            document.getElementById('username_div').style.color = "red";
+            name_error.textContent = "El nombre debe tener al menos 5 caracteres";
+            username.focus();
+            return false;
+        }
+
+        if (email.value == "") {
+            email.style.border = "1px solid red";
+            document.getElementById('email_div').style.color = "red";
+            email_error.textContent = "Es necesario introducir un correo";
+            email.focus();
+            return false;
+        }
+
+        if (password.value == "") {
+            password.style.border = "1px solid red";
+            document.getElementById('password_div').style.color = "red";
+            password_confirm.style.border = "1px solid red";
+            password_error.textContent = "Debe introducir una contraseña";
+            password.focus();
+            return false;
+        }
+
+        if (password.value != password_confirm.value) {
+            password.style.border = "1px solid red";
+            document.getElementById('pass_confirm_div').style.color = "red";
+            password_confirm.style.border = "1px solid red";
+            password_error.innerHTML = "Las dos contraseñas deben coincidir";
+            return false;
+        }
+    }
+
+    function nameVerify() {
+        if (username.value != "") {
+            username.style.border = "1px solid grey ";
+            document.getElementById('username_div').style.color = "grey";
+            name_error.innerHTML = "";
+            return true;
+        }
+
+
+    }
+    function emailVerify() {
+        if (email.value != "") {
+            email.style.border = "1px solid grey";
+            document.getElementById('email_div').style.color = "grey";
+            email_error.innerHTML = "";
+            return true;
+        }
+    }
+    function passwordVerify() {
+        if (password.value != "") {
+            password.style.border = "1px solid grey";
+            document.getElementById('pass_confirm_div').style.color = "grey";
+            document.getElementById('password_div').style.color = "grey";
+            password_error.innerHTML = "";
+            return true;
+        }
+        if (password.value === password_confirm.value) {
+            password.style.border = "1px solid grey";
+            document.getElementById('pass_confirm_div').style.color = "grey";
+            password_error.innerHTML = "";
+            return true;
+        }
+    }
+</script>

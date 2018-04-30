@@ -1,0 +1,34 @@
+#guiajuegos, #guiajuegos .fbox {
+    height: 60px;
+}
+
+#guiajuegos {
+    background-color: black;
+    padding-left: 20px;
+}
+
+#guiajuegos .fbox * {
+    float: left;
+}
+
+#guiajuegos .guia {
+    color: white;
+    font-family: 'olijo';
+    font-size: 44px;
+    line-height: 60px;
+}
+
+#guiajuegos .juegos {
+    color: orange;
+    font-family: 'anivers';
+    font-size: 50px;
+    line-height: 56px;
+}
+
+#guiajuegos .guia a {
+    color: white;
+}
+
+#guiajuegos .juegos a {
+    color: orange;
+}
